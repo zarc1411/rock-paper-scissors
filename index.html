@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rock Paper Scissors</title>
+</head>
+<body>
+
+<script>
+    const choices = ["rock" , "paper" , "scissors"];
+    function computerPlay()
+    {
+        let computersChoice = choices[randomInt()- 1];
+        return computersChoice;
+    }
+
+    function randomInt()
+    {
+        return Math.floor(Math.random() * 3) + 1;
+    }
+
+    game();
+
+    function game()
+    {
+        for(i = 0 ; i<5 ; i++)
+        {
+            let result = playRound();
+        }
+    }
+
+    function playRound()
+    {
+        const playerSelection = prompt("Please enter your choice");
+        const computerSelection = computerPlay();
+        let result;
+        if(playerSelection === computerSelection)
+        {
+            result = "It's a draw!";
+            declareResult(result);
+        }
+        else if(playerSelection === 'rock' && computerSelection == 'scissors' || 
+                playerSelection === 'paper' && computerSelection === 'rock' || 
+                playerSelection === 'scissors' && computerSelection === 'paper')
+                {
+                    result = "You win! ";
+                    declareResult(result , playerSelection , computerSelection);
+                }
+        else
+        {
+            result = "You lose! ";
+            declareResult(result , computerSelection , playerSelection);
+        }
+        return result;
+    }
+
+    function declareResult(result , winningChoice , losingChoice)
+    {
+        if(result!=="It's a draw!")
+        console.log(result + winningChoice.charAt(0).toUpperCase() + winningChoice.slice(1) 
+        + " beats " + losingChoice.charAt(0).toUpperCase() + losingChoice.slice(1)+"!");
+        else
+        console.log(result);
+    }
+
+
+</script>
+
+</body>
+</html>
